@@ -12,38 +12,39 @@ app.layout = html.Div([
     html.H1("Real Estate Analysis Dashboard"),
     html.Div([
         html.Div([
-
-            # Sliders for setting parameters
-            html.Label("Years of Rent to Pay Back the Flat"),
+            html.A("See the code", href="https://github.com/dalmo1991-playground/test_deploy_dash"),
+            html.Label("Flat cost / annual rent"),
             dcc.Slider(id='rent-to-cost-slider', min=10, max=60, step=5, value=40),
 
-            html.Label("Percentage of Maintenance"),
-            dcc.Slider(id='percentage-of-maintenance-slider', min=0.005, max=0.02, step=0.001, value=0.01),
+            html.Label("Cost of Maintenance (%)"),
+            dcc.Slider(id='percentage-of-maintenance-slider', min=0.005, max=0.05, step=0.005, value=0.01),
 
-            html.Label("Simulation Duration"),
+            html.Label("Duration of the simulation (yr)"),
             dcc.Slider(id='simulation-duration-slider', min=30, max=70, step=5, value=50),
 
-            html.Label("Downpayment Percentage"),
+            html.Label("Downpayment (%)"),
             dcc.Slider(id='downpayment-slider', min=0.05, max=1.0, step=0.05, value=0.2),
 
-            html.Label("Percentage Never Paid"),
+            html.Label("Debt never paid back (%)"),
             dcc.Slider(id='percentage-never-paid-slider', min=0.0, max=1.0, step=0.05, value=0.65),
 
-            html.Label("Percentage Paid"),
+            html.Label("Debt paid back (%)"),
             dcc.Slider(id='percentage-paid-slider', min=0.0, max=1.0, step=0.05, value=0.15),
 
-            html.Label("Duration of Paid Debt"),
+            html.Label("Duration of Paid Debt (yr)"),
             dcc.Slider(id='duration-slider', min=10, max=30, step=5, value=15),
 
-            html.Label("Interest Rate"),
+            html.Label("Fixed Interest Rate (%)"),
             dcc.Slider(id='interest-slider', min=0.01, max=0.05, step=0.005, value=0.02),
 
-            html.Label("Flat Mean Return"),
+            html.H3("Gaussian distribution for return of flat value"),
+            html.Label("Mean Return"),
             dcc.Slider(id='flat-mean-slider', min=0.01, max=0.05, step=0.005, value=0.02),
 
-            html.Label("Flat Sigma"),
-            dcc.Slider(id='flat-sigma-slider', min=0.005, max=0.03, step=0.05, value=0.01),
+            html.Label("Sigma"),
+            dcc.Slider(id='flat-sigma-slider', min=0.005, max=0.03, step=0.005, value=0.01),
 
+            html.H3("Model for the return of the stock market (double Gaussian distribution)"),
             html.Label("Good Year Probability"),
             dcc.Slider(id='good-year-prob-slider', min=0.0, max=1.0, step=0.1, value=0.8),
 
@@ -54,7 +55,7 @@ app.layout = html.Div([
             dcc.Slider(id='good-year-sigma-slider', min=0.01, max=0.05, step=0.005, value=0.02),
 
             html.Label("Bad Year Mean Return"),
-            dcc.Slider(id='bad-year-mean-slider', min=-0.15, max=-0.01, step=0.005, value=-0.08),
+            dcc.Slider(id='bad-year-mean-slider', min=-0.15, max=-0.01, step=0.01, value=-0.08),
 
             html.Label("Bad Year Sigma"),
             dcc.Slider(id='bad-year-sigma-slider', min=0.01, max=0.05, step=0.005, value=0.02),
