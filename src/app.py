@@ -12,7 +12,7 @@ app.layout = html.Div([
     html.H1("Real Estate Analysis Dashboard"),
     html.Div([
         html.Div([
-            html.A("See the code", href="https://github.com/dalmo1991-playground/test_deploy_dash"),
+            html.P(["The logic behind this app has been developed in 2 hours. The dashboard has been created with ChatGPT. It runs 10k Monte Carlo simulations to show the mean return of buy-vs-rent in CH. ", html.A("See the code", href="https://github.com/dalmo1991-playground/test_deploy_dash"), " to understand how it works. This server is slow. I suggest to download the code and run it locally"]),
             html.Label("Flat cost / annual rent"),
             dcc.Slider(id='rent-to-cost-slider', min=10, max=60, step=5, value=40),
 
