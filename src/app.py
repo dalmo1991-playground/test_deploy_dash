@@ -158,20 +158,39 @@ def update_plots(rent_to_cost, percentage_of_maintenance, simulation_duration,
 
     fig1 = go.Figure()
     fig1.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=rent_cost.mean(axis=0), mode='lines', name='Rent', line=dict(color='red')))
+    fig1.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([rent_cost.min(axis=0), rent_cost.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(255,0,0,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=False))
+
     fig1.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=maint_cost.mean(axis=0), mode='lines', name='Maintenance', line=dict(color='blue')))
+    fig1.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([maint_cost.min(axis=0), maint_cost.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(0,0,255,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=False))
+
     fig1.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=loan_cost.mean(axis=0), mode='lines', name='Loan', line=dict(color='purple')))
+    fig1.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([loan_cost.min(axis=0), loan_cost.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(128,0,128,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=False))
+
     fig1.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=rent_vs_buy_annual.mean(axis=0), mode='lines', name='Owning minus Renting', line=dict(color='green')))
+    fig1.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([rent_vs_buy_annual.min(axis=0), rent_vs_buy_annual.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(0,128,0,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=False))
+
     fig1.update_layout(title="Costs Over Time",
                        xaxis_title="Years",
                        yaxis_title="CHF")
 
     fig2 = go.Figure()
     fig2.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=flat_value.mean(axis=0), mode='lines', name='Flat Value', line=dict(color='red')))
+    fig2.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([flat_value.min(axis=0), flat_value.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(255,0,0,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=True))
+
     fig2.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=(NEVER_PAID * COST_OF_FLAT + paid_loan_remaining.mean(axis=0)), mode='lines', name='Total Debt', line=dict(color='blue')))
+    fig2.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([paid_loan_remaining.min(axis=0), paid_loan_remaining.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(0,0,255,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=True))
+
     fig2.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=value_init_dep.mean(axis=0), mode='lines', name='Return if Downpayment Invested', line=dict(color='purple')))
+    fig2.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([value_init_dep.min(axis=0), value_init_dep.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(128,0,128,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=True))
+
     fig2.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=value_annual_diff.mean(axis=0), mode='lines', name='Return on Difference in Case of Rent', line=dict(color='green')))
+    fig2.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([value_annual_diff.min(axis=0), value_annual_diff.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(0,128,0,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=True))
+
     fig2.add_trace(go.Scatter(x=np.arange(SIMULATION_DURATION), y=buy_minus_rent.mean(axis=0), mode='lines', name='Owning minus Renting', line=dict(color='orange')))
-    fig2.update_layout(title="Returns Over Time",
+    fig2.add_trace(go.Scatter(x=np.concatenate((np.arange(SIMULATION_DURATION), np.arange(SIMULATION_DURATION)[::-1])), y=np.concatenate(([buy_minus_rent.min(axis=0), buy_minus_rent.max(axis=0)[::-1]])), fill="toself", fillcolor='rgba(255,165,0,0.2)', line=dict(color='rgba(255,255,255,0)'), showlegend=True))
+
+
+    fig2.update_layout(title="Returns Over Time - click on legend to remove uncertainty bands",
                        xaxis_title="Years",
                        yaxis_title="CHF (millions)")
 
