@@ -15,49 +15,49 @@ app.layout = html.Div([
 
             # Sliders for setting parameters
             html.Label("Years of Rent to Pay Back the Flat"),
-            dcc.Slider(id='rent-to-cost-slider', min=20, max=60, step=1, value=40),
+            dcc.Slider(id='rent-to-cost-slider', min=10, max=60, step=5, value=40),
 
             html.Label("Percentage of Maintenance"),
             dcc.Slider(id='percentage-of-maintenance-slider', min=0.005, max=0.02, step=0.001, value=0.01),
 
             html.Label("Simulation Duration"),
-            dcc.Slider(id='simulation-duration-slider', min=30, max=100, step=5, value=50),
+            dcc.Slider(id='simulation-duration-slider', min=30, max=70, step=5, value=50),
 
             html.Label("Downpayment Percentage"),
-            dcc.Slider(id='downpayment-slider', min=0.05, max=0.5, step=0.05, value=0.2),
+            dcc.Slider(id='downpayment-slider', min=0.05, max=1.0, step=0.05, value=0.2),
 
             html.Label("Percentage Never Paid"),
-            dcc.Slider(id='percentage-never-paid-slider', min=0.5, max=0.8, step=0.05, value=0.65),
+            dcc.Slider(id='percentage-never-paid-slider', min=0.0, max=1.0, step=0.05, value=0.65),
 
-            html.Label("Percentage Paid in 15 Years"),
-            dcc.Slider(id='percentage-paid-slider', min=0.05, max=0.3, step=0.05, value=0.15),
+            html.Label("Percentage Paid"),
+            dcc.Slider(id='percentage-paid-slider', min=0.0, max=1.0, step=0.05, value=0.15),
 
             html.Label("Duration of Paid Debt"),
-            dcc.Slider(id='duration-slider', min=10, max=30, step=1, value=15),
+            dcc.Slider(id='duration-slider', min=10, max=30, step=5, value=15),
 
             html.Label("Interest Rate"),
-            dcc.Slider(id='interest-slider', min=0.01, max=0.05, step=0.01, value=0.02),
+            dcc.Slider(id='interest-slider', min=0.01, max=0.05, step=0.005, value=0.02),
 
             html.Label("Flat Mean Return"),
-            dcc.Slider(id='flat-mean-slider', min=0.01, max=0.05, step=0.01, value=0.02),
+            dcc.Slider(id='flat-mean-slider', min=0.01, max=0.05, step=0.005, value=0.02),
 
             html.Label("Flat Sigma"),
-            dcc.Slider(id='flat-sigma-slider', min=0.005, max=0.02, step=0.001, value=0.01),
+            dcc.Slider(id='flat-sigma-slider', min=0.005, max=0.03, step=0.05, value=0.01),
 
             html.Label("Good Year Probability"),
-            dcc.Slider(id='good-year-prob-slider', min=0.6, max=0.9, step=0.05, value=0.8),
+            dcc.Slider(id='good-year-prob-slider', min=0.0, max=1.0, step=0.1, value=0.8),
 
             html.Label("Good Year Mean Return"),
-            dcc.Slider(id='good-year-mean-slider', min=0.05, max=0.15, step=0.01, value=0.1),
+            dcc.Slider(id='good-year-mean-slider', min=0.03, max=0.15, step=0.01, value=0.1),
 
             html.Label("Good Year Sigma"),
-            dcc.Slider(id='good-year-sigma-slider', min=0.01, max=0.05, step=0.01, value=0.02),
+            dcc.Slider(id='good-year-sigma-slider', min=0.01, max=0.05, step=0.005, value=0.02),
 
             html.Label("Bad Year Mean Return"),
-            dcc.Slider(id='bad-year-mean-slider', min=-0.1, max=-0.05, step=0.01, value=-0.08),
+            dcc.Slider(id='bad-year-mean-slider', min=-0.15, max=-0.01, step=0.005, value=-0.08),
 
             html.Label("Bad Year Sigma"),
-            dcc.Slider(id='bad-year-sigma-slider', min=0.01, max=0.05, step=0.01, value=0.02),
+            dcc.Slider(id='bad-year-sigma-slider', min=0.01, max=0.05, step=0.005, value=0.02),
         ], style={"width": "40%"}),
         html.Div([
             # Plots
